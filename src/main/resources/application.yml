@@ -1,0 +1,54 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: FinancialStatement
+  freemarker:
+    expose-session-attributes: true
+
+  # ------------- DataBases
+  datasource:
+    url: url
+    username: postgres
+    password: password
+
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+  liquibase:
+    change-log: classpath:/db/changelog/master.yaml
+
+  output:
+    ansi:
+      enabled: always
+
+  mail:
+    host: smtp.gmail.com
+    username:
+    password:
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+
+logging:
+  level:
+    com.zaxxer.hikari: debug
+    org.hibernate.SQL: debug
+    root: info
+    org:
+      springframework:
+        security: debug
+  file:
+    path: logs
