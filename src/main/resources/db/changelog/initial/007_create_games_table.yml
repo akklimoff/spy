@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: 007
+      author: Aktan
+      changes:
+        - createTable:
+            tableName: games
+            columns:
+              - column:
+                  name: id
+                  type: varchar(14)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: quantity_of_players
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: quantity_of_spies
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_by_user_id
+                  type: varchar(12)
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_games_users
+                    references: users(id)
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false

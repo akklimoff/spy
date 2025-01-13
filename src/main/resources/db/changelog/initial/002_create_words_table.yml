@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002
+      author: Aktan
+      changes:
+        - createTable:
+            tableName: words
+            columns:
+              - column:
+                  name: id
+                  type: varchar(8)
+              - column:
+                  name: name
+                  type: varchar(55)
+              - column:
+                  name: category_id
+                  type: varchar(6)
+                  constraints:
+                    foreignKeyName: fk_words_categories
+                    references: categories(id)
+                    nullable: false

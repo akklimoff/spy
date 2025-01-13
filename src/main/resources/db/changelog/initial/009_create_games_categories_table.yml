@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: 009
+      author: Aktan
+      changes:
+        - createTable:
+            tableName: games_categories
+            columns:
+              - column:
+                  name: game_id
+                  type: varchar(14)
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_games_categories_games
+                    references: games(id)
+              - column:
+                  name: category_id
+                  type: varchar(5)
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_games_categories_categories
+                    references: categories(id)

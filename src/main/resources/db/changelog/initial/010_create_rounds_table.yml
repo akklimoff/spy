@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: 010
+      author: Aktan
+      changes:
+        - createTable:
+            tableName: rounds
+            columns:
+              - column:
+                  name: id
+                  type: varchar(14)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: game_id
+                  type: varchar(14)
+                  constraints:
+                    foreignKeyName: fk_rounds_games
+                    references: games(id)
+                    nullable: false
+              - column:
+                  name: word_id
+                  type: varchar(8)
+                  constraints:
+                    foreignKeyName: fk_rounds_words
+                    references: words(id)
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false

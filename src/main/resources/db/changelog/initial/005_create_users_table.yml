@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: 005
+      author: Aktan
+      changes:
+        - createTable:
+             tableName: users
+             columns:
+               - column:
+                   name: id
+                   type: varchar(11)
+                   constraints:
+                     primaryKey: true
+                     nullable: false
+               - column:
+                   name: nickname
+                   type: varchar(55)
+               - column:
+                   name: email
+                   type: varchar(95)
+               - column:
+                   name: name
+                   type: varchar(55)
+               - column:
+                   name: surname
+                   type: varchar(55)
+               - column:
+                   name: password
+                   type: varchar(255)
+               - column:
+                   name: authority_id
+                   type: varchar(6)
+                   constraints:
+                     foreignKeyName: fk_users_authorities
+                     references: authorities(id)
