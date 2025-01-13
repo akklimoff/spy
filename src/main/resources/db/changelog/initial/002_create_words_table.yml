@@ -9,6 +9,9 @@ databaseChangeLog:
               - column:
                   name: id
                   type: varchar(8)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
               - column:
                   name: name
                   type: varchar(55)

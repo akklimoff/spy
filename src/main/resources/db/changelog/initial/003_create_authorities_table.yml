@@ -13,7 +13,7 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: name
+                  name: role
                   type: varchar(55)
                   constraints:
                     nullable: false

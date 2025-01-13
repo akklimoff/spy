@@ -33,3 +33,8 @@ databaseChangeLog:
                    constraints:
                      foreignKeyName: fk_users_authorities
                      references: authorities(id)
+               - column:
+                   name: enabled
+                   type: boolean
+                   constraints:
+                     nullable: false
