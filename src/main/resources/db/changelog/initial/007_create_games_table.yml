@@ -23,6 +23,13 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
+                  name: status_id
+                  type: varchar(5)
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_games_statuses
+                    references: statuses(id)
+              - column:
                   name: created_by_user_id
                   type: varchar(12)
                   constraints:
