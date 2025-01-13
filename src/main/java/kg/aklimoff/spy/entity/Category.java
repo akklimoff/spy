@@ -1,10 +1,10 @@
 package kg.aklimoff.spy.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,4 +20,7 @@ public class Category {
 
     @Column(name = "name")
     private String name;
+
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "categories", cascade = CascadeType.ALL)
+    private List<Game> games = new ArrayList<>();
 }

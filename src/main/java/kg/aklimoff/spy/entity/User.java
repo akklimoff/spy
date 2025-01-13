@@ -7,6 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -44,7 +45,10 @@ public class User{
     private Authority authority;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<Game> games;
+    private List<Game> createdGames;
+
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "users", cascade = CascadeType.ALL)
+    private List<Game> games = new ArrayList<>();
 
 //    @Override
 //    public Collection<? extends GrantedAuthority> getAuthorities() {
