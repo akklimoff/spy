@@ -30,6 +30,9 @@ databaseChangeLog:
                     foreignKeyName: fk_games_statuses
                     references: statuses(id)
               - column:
+                  name: time_control
+                  type: int
+              - column:
                   name: created_by_user_id
                   type: varchar(12)
                   constraints:

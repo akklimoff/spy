@@ -28,6 +28,9 @@ public class Game {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
+    @Column(name = "time_control")
+    private Integer timeControl;
+
     @ManyToOne
     @JoinColumn(name = "created_by_user_id", referencedColumnName = "id")
     private User user;
