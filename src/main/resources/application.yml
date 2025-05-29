@@ -52,3 +52,7 @@ logging:
         security: debug
   file:
     path: logs
+
+jwt:
+    secret: secret
+    expiration: 86400000

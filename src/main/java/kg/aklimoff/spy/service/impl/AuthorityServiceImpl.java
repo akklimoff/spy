@@ -25,4 +25,12 @@ public class AuthorityServiceImpl implements AuthorityService {
         return authorityRepository.findById(authorityId)
                 .orElseThrow(() -> new NoSuchElementException("Authority not found with id: " + authorityId));
     }
+
+    @Override
+    public Authority findDefaultAuthority() {
+        String defaultAuthorityId = "rl001";
+        return authorityRepository.findById(defaultAuthorityId)
+                .orElseThrow(() -> new NoSuchElementException("Authority not found with id: " + defaultAuthorityId));
+
+    }
 }

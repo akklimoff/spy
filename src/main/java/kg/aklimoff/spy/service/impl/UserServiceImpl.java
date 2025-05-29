@@ -3,6 +3,7 @@ package kg.aklimoff.spy.service.impl;
 import kg.aklimoff.spy.dto.UserRegisterDto;
 import kg.aklimoff.spy.entity.User;
 import kg.aklimoff.spy.repository.UserRepository;
+import kg.aklimoff.spy.service.AuthorityService;
 import kg.aklimoff.spy.service.UserService;
 import kg.aklimoff.spy.utils.UniqueIdGenerator;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,8 @@ import java.util.NoSuchElementException;
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private UniqueIdGenerator uniqueIdGenerator;
+    private final UniqueIdGenerator uniqueIdGenerator;
+    private final AuthorityService authorityService;
 
     @Override
     public User findUserById(String userId) {
@@ -31,6 +33,8 @@ public class UserServiceImpl implements UserService {
     public void createUser(UserRegisterDto userRegisterDto) {
         userRegisterDto.setPassword(passwordEncoder.encode(userRegisterDto.getPassword()));
         User user = convertToEntity(userRegisterDto);
+        user.setAuthority(authorityService.findDefaultAuthority());
+        userRepository.save(user);
     }
 
 
