@@ -34,6 +34,7 @@ public class UserServiceImpl implements UserService {
         userRegisterDto.setPassword(passwordEncoder.encode(userRegisterDto.getPassword()));
         User user = convertToEntity(userRegisterDto);
         user.setAuthority(authorityService.findDefaultAuthority());
+        user.setEnabled(true);
         userRepository.save(user);
     }
 
